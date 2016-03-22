@@ -694,10 +694,10 @@ public class Hand {
 	};
 	
 	public static Hand PickBestHand(ArrayList<Hand> Hands) throws HandException {
-		Collections.sort(Hands, Hand.HandRank);
-		Hand highHand = Hands.get(0);
-		if(highHand == Hands.get(1))
-			throw new HandException(highHand);
-		return highHand;
+		Collections.sort(Hands, HandRank);
+		if(1 < Hands.size() && HandRank.compare(Hands.get(0), Hands.get(1)) == 0){
+			throw new HandException(Hands.get(0));
+			}
+		else return Hands.get(0);
+				}
 	}
-}
